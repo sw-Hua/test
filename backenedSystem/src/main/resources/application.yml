@@ -1,0 +1,88 @@
+server:
+  port: 8080
+spring:
+  boot:
+    admin:
+      client:
+        # Spring Boot Admin Server address   http://localhost:8080  Can be customized
+        url:  http://localhost:8104
+  # By default, most endpoints are not exposed through HTTP; we expose all endpoints. For production, you should carefully choose which endpoints to expose.
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+    endpoint:
+      health:
+        show-details: ALWAYS
+
+  application:
+    #Application name. This parameter is optional
+    name: backenedManagement
+#  datasource:
+#    druid:
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+#      username: root
+#      password: 123456
+  shardingsphere:
+    datasource:
+      names:
+        master,slave
+      # The main data source
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://175.178.51.92:3306/db41026?characterEncoding=utf-8
+        username: root
+        password: 123456
+      # From the data source
+      slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://175.178.51.92:3306/db41026?characterEncoding=utf-8
+        username: root
+        password: 123456
+    masterslave:
+      # Read/write Separation Configuration
+      load-balance-algorithm-type: round_robin #poll
+
+      # The final data source name
+      name: dataSource
+      # Primary database data source name
+      master-data-source-name: master
+      # List of slave library data source names, separated by multiple commas
+      slave-data-source-names: slave
+    props:
+      sql:
+        show: true #Enable SQL display (false by default)
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    host: 175.178.51.92
+    port: 6380
+    password: 123456
+    database: 0
+  cache:
+    redis:
+      time-to-live: 1800000 #Set the expiration time of cached data
+mybatis-plus:
+  configuration:
+    #When mapping entities or attributes, remove the underscore from the table name and field name in the database and map according to the hump nomenclature
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+benjamen:
+  path: D:\img\
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8102/eureka/
+    instance:
+      hostname: localhost
+
+
+#knife4j:
+#  production: true # The document resource masking function is enabled

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>iconfont Demo</title>
+  <link rel="shortcut icon" href="//img.alicdn.com/imgextra/i2/O1CN01ZyAlrn1MwaMhqz36G_!!6000000001499-73-tps-64-64.ico" type="image/x-icon"/>
+  <link rel="icon" type="image/svg+xml" href="//img.alicdn.com/imgextra/i4/O1CN01EYTRnJ297D6vehehJ_!!6000000008020-55-tps-64-64.svg"/>
+  <link rel="stylesheet" href="https://g.alicdn.com/thx/cube/1.3.2/cube.min.css">
+  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="iconfont.css">
+  <script src="iconfont.js"></script>
+  <!-- jQuery -->
+  <script src="https://a1.alicdn.com/oss/uploads/2018/12/26/7bfddb60-08e8-11e9-9b04-53e73bb6408b.js"></script>
+
+  <script src="https://a1.alicdn.com/oss/uploads/2018/12/26/a3f714d0-08e6-11e9-8a15-ebf944d7534c.js"></script>
+  <style>
+    .main .logo {
+      margin-top: 0;
+      height: auto;
+    }
+
+    .main .logo a {
+      display: flex;
+      align-items: center;
+    }
+
+    .main .logo .sub-title {
+      margin-left: 0.5em;
+      font-size: 22px;
+      color: #fff;
+      background: linear-gradient(-45deg, #3967FF, #B500FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h1 class="logo"><a href="https://www.iconfont.cn/" title="iconfont 首页" target="_blank">
+      <img width="200" src="https://img.alicdn.com/imgextra/i3/O1CN01Mn65HV1FfSEzR6DKv_!!6000000000514-55-tps-228-59.svg">
+      
+    </a></h1>
+    <div class="nav-tabs">
+      <ul id="tabs" class="dib-box">
+        <li class="dib active"><span>Unicode</span></li>
+        <li class="dib"><span>Font class</span></li>
+        <li class="dib"><span>Symbol</span></li>
+      </ul>
+      
+      <a href="https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=2552591" target="_blank" class="nav-more">查看项目</a>
+      
+    </div>
+    <div class="tab-container">
+      <div class="content unicode" style="display: block;">
+          <ul class="icon_lists dib-box">
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe606;</span>
+                <div class="name">category</div>
+                <div class="code-name">&amp;#xe606;</div>
+              </li>
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe607;</span>
+                <div class="name">member</div>
+                <div class="code-name">&amp;#xe607;</div>
+              </li>
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe608;</span>
+                <div class="name">user</div>
+                <div class="code-name">&amp;#xe608;</div>
+              </li>
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe609;</span>
+                <div class="name">order</div>
+                <div class="code-name">&amp;#xe609;</div>
+              </li>
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe60a;</span>
+                <div class="name">combo</div>
+                <div class="code-name">&amp;#xe60a;</div>
+              </li>
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe60b;</span>
+                <div class="name">lock</div>
+                <div class="code-name">&amp;#xe60b;</div>
+              </li>
+          
+            <li class="dib">
+              <span class="icon iconfont">&#xe60c;</span>
+                <div class="name">food</div>
+                <div class="code-name">&amp;#xe60c;</div>
+              </li>
+          
+          </ul>
+          <div class="article markdown">
+          <h2 id="unicode-">Unicode 引用</h2>
+          <hr>
+
+              <p>Unicode is the original application of fonts on the web. It is characterized by: </p>
+
+              <ul>
+
+                  <li> supports the dynamic adjustment of icon size, color, etc. </li>
+
+                  <li> Multicolor is not supported by default, and adding a multicolor icon will automatically remove the color. </li>
+
+              </ul>
+
+              <blockquote>
+
+                  <p> Note: The new iconfont supports two ways to reference multi-color ICONS: SVG Symbol reference and color font icon mode. (To use the colored font icon, you need to turn on the Color option in Edit Project and regenerate it.) </p>
+
+              </blockquote>
+
+              <p> Use Unicode as follows: </p>
+
+              <h3 id="-font-face"> Step 1: Copy the <code>@font-face</code></h3> generated under the project
+
+
+              <pre><code class="language-css"
+>@font-face {
+  font-family: 'iconfont';
+  src: url('iconfont.woff2?t=1621231825060') format('woff2'),
+       url('iconfont.woff?t=1621231825060') format('woff'),
+       url('iconfont.ttf?t=1621231825060') format('truetype');
+}
+</code></pre>
+          <h3 id="-iconfont-">Step 2: Define style using iconfont</h3>
+<pre><code class="language-css"
+>.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</code></pre>
+          <h3 >Step 3: Select the corresponding icon and get the font encoding, apply to the page</h3>
+<pre>
+<code class="language-html"
+>&lt;span class="iconfont"&gt;&amp;#x33;&lt;/span&gt;
+</code></pre>
+          <blockquote>
+            <p>"Iconfont" is the font-family of your project. This can be viewed by editing the project. The default is "iconfont". </p>
+          </blockquote>
+          </div>
+      </div>
+      <div class="content font-class">
+        <ul class="icon_lists dib-box">
+          
+          <li class="dib">
+            <span class="icon iconfont icon-category"></span>
+            <div class="name">
+              category
+            </div>
+            <div class="code-name">.icon-category
+            </div>
+          </li>
+          
+          <li class="dib">
+            <span class="icon iconfont icon-member"></span>
+            <div class="name">
+              member
+            </div>
+            <div class="code-name">.icon-member
+            </div>
+          </li>
+          
+          <li class="dib">
+            <span class="icon iconfont icon-user"></span>
+            <div class="name">
+              user
+            </div>
+            <div class="code-name">.icon-user
+            </div>
+          </li>
+          
+          <li class="dib">
+            <span class="icon iconfont icon-order"></span>
+            <div class="name">
+              order
+            </div>
+            <div class="code-name">.icon-order
+            </div>
+          </li>
+          
+          <li class="dib">
+            <span class="icon iconfont icon-combo"></span>
+            <div class="name">
+              combo
+            </div>
+            <div class="code-name">.icon-combo
+            </div>
+          </li>
+          
+          <li class="dib">
+            <span class="icon iconfont icon-lock"></span>
+            <div class="name">
+              lock
+            </div>
+            <div class="code-name">.icon-lock
+            </div>
+          </li>
+          
+          <li class="dib">
+            <span class="icon iconfont icon-food"></span>
+            <div class="name">
+              food
+            </div>
+            <div class="code-name">.icon-food
+            </div>
+          </li>
+          
+        </ul>
+        <div class="article markdown">
+            <h2 id=" word-break -"> word-break -class reference </h2>
+            <hr>
+
+            <p>font-class is a variety of Unicode usage, mainly to solve the Unicode writing is not intuitive, the semantic is not clear. </p>
+            Compared with Unicode usage, <p> has the following characteristics: </p>
+            <ul>
+                < Li > Compared to Unicode, the semantics is clear and the writing is more intuitive. It's easy to tell what the icon is. </li>
+                <li> Because we use class to define ICONS, we only need to modify the Unicode reference in class when replacing ICONS. </li>
+            </ul>
+            <p> Use the following steps: </p>
+            <h3 id="-fontclass-"> Step 1: Import the generated fontclass code below the project: </h3>
+            <pre><code class="language-html">&lt; link rel="stylesheet" href="./iconfont.css"&gt;
+</code></pre>
+            <h3 id=""> Step 2: Select the corresponding icon and get the class name, apply it to the page: </h3>
+            <pre><code class="language-html">&lt; span class="iconfont icon-xxx"&gt; &lt; /span&gt;
+</code></pre>
+            <blockquote>
+                <p>"
+                    "Iconfont" is the "font-family" under your project. This can be viewed by editing the project. The default is "iconfont". </p>
+        </blockquote>
+      </div>
+      </div>
+      <div class="content symbol">
+          <ul class="icon_lists dib-box">
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-category"></use>
+                </svg>
+                <div class="name">category</div>
+                <div class="code-name">#icon-category</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-member"></use>
+                </svg>
+                <div class="name">member</div>
+                <div class="code-name">#icon-member</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-user"></use>
+                </svg>
+                <div class="name">user</div>
+                <div class="code-name">#icon-user</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-order"></use>
+                </svg>
+                <div class="name">order</div>
+                <div class="code-name">#icon-order</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-combo"></use>
+                </svg>
+                <div class="name">combo</div>
+                <div class="code-name">#icon-combo</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-lock"></use>
+                </svg>
+                <div class="name">lock</div>
+                <div class="code-name">#icon-lock</div>
+            </li>
+          
+            <li class="dib">
+                <svg class="icon svg-icon" aria-hidden="true">
+                  <use xlink:href="#icon-food"></use>
+                </svg>
+                <div class="name">food</div>
+                <div class="code-name">#icon-food</div>
+            </li>
+          
+          </ul>
+          <div class="article markdown">
+          <h2 id="symbol-">Symbol 引用</h2>
+          <hr>
+
+              <p> This is a completely new way of using it, and it should be said that this is the mainstream of the future and the current recommended usage of the platform. See the < A href=""> article </a> for more information.
+                  This usage is actually a collection of SVGS with the following characteristics over the other two: </p>
+              <ul>
+                  < Li > now supports multicolor ICONS instead of monochrome. </li>
+                  <li> With some tricks, you can adjust the style by <code>font-size</code>, <code>color</code>, just like fonts. </li>
+                  <li> Poor compatibility, supporting Internet Explorer 9+, and modern browsers. </li>
+                  <li> browsers render SVG only moderately, not as well as PNG. </li>
+              </ul>
+              <p> Use the following steps: </p>
+              <h3 id="-symbol-"> Step 1: Introduce the symbol code generated below the project: </h3>
+              <pre><code class="language-html">&lt; script src="./iconfont.js"&gt; &lt; /script&gt;
+</code></pre>
+              <h3 id="-css-"> Step 2: Add common CSS code (just once) : </h3>
+              <pre><code class="language-html">&lt; style&gt;
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+&lt;/style&gt;
+</code></pre>
+          <h3 id="-">第三步：挑选相应图标并获取类名，应用于页面：</h3>
+<pre><code class="language-html">&lt;svg class="icon" aria-hidden="true"&gt;
+  &lt;use xlink:href="#icon-xxx"&gt;&lt;/use&gt;
+&lt;/svg&gt;
+</code></pre>
+          </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+  $(document).ready(function () {
+      $('.tab-container .content:first').show()
+
+      $('#tabs li').click(function (e) {
+        var tabContent = $('.tab-container .content')
+        var index = $(this).index()
+
+        if ($(this).hasClass('active')) {
+          return
+        } else {
+          $('#tabs li').removeClass('active')
+          $(this).addClass('active')
+
+          tabContent.hide().eq(index).fadeIn()
+        }
+      })
+    })
+  </script>
+</body>
+</html>
