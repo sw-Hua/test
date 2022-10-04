@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+    <title>paymentMethod</title>
+    <style type="text/css">
+        /* CSS Document */
+        body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, table, td, img, div, dl, dt, dd {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: gray;
+            font-size: 12px;
+        }
+
+        input {
+            padding: 20px;
+            margin: 10px;
+            box-sizing: border-box
+
+        }
+
+        img {
+            border: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        input, select, textarea {
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /*清浮动*/
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        /* 取消a标签点击后的虚线框 */
+        a {
+            outline: none;
+        }
+
+        a:active {
+            star: expression(this.onFocus=this.blur());
+        }
+
+        input[type="text"] {
+            outline: none;
+        }
+
+        /*付款方式*/
+        .payWrap {
+            width: 950px;
+            min-height: 560px;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+
+        .payHeader {
+            height: 63px;
+            line-height: 56px;
+            border-bottom: 1px solid #CCCCCC;
+            padding: 0 40px;
+            background-color: rgb(40, 40, 40);
+            color: rgb(185, 182, 183);
+        }
+
+        .payWrap .fontsize {
+            color: #d81e06;
+            font-size: 18px;
+            margin: 0 5px;
+        }
+
+        .payContent {
+            padding: 4px 20px;
+        }
+
+        .unionpayList {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            margin: 5px 0;
+            position: relative;
+            border-bottom: 2px solid rgb(230, 230, 230);
+            /*border-bottom: 1px slategray solid;*/
+        }
+
+        .unionpayList:hover {
+            cursor: pointer;
+            background: #f1f4fa;
+        }
+
+        .unionPrice {
+            position: absolute;
+            top: 0;
+            right: 20px;
+        }
+
+        .unionpay1 {
+            padding: 0 20px 0 62px;
+            /*background: url("") 20px center no-repeat;*/
+        }
+
+        .unionpay2 {
+            padding: 0 20px 0 62px;
+            /*background: url("images/unionpay2.png") 20px center no-repeat;*/
+        }
+
+        .activeBtn {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border: 2px solid #7a97cc;
+        }
+
+        .payBorder {
+            width: 100%;
+            border-top: 1px solid #f2f2f2;
+            margin-top: 30px;
+        }
+
+        .payBut {
+            display: block;
+            width: 150px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            background: #0169c6 !important;
+            color: #FFFFFF !important;
+            float: left !important;
+            margin: 20px 0;
+        }
+
+        .wait {
+            display: block;
+            width: 300px;
+            height: 32px;
+            margin: 30px 0 0 160px;
+            text-decoration: underline !important;
+        }
+
+        .border_bottom {
+            border: 1px solid red;
+            border-bottom: none
+        }
+
+        .border_top {
+            border: 1px solid red;
+            border-top: none
+        }
+    </style>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+
+</head>
+</head>
+<body>
+<div class="payWrap">
+    <div class="payHeader clearfix" style="color: aliceblue;position: relative;font-size:20px">
+        <strong class="fontsize"> < </strong><strong class="fl" style="margin-left:300px">Confirm payment<i></i></strong>
+        <strong style="margin-left:280px"><i class="fa fa-info-circle">0.7<i class="fa fa-star"
+                                                                             style="color: rgb(188, 168, 93)"></i></i></strong>
+
+    </div>
+    <div class="payHeader clearfix">
+        <strong class="fl"><i class="fa fa-map-marker"></i>pick up store</strong>
+        This is a address
+    </div>
+    <div class="payHeader clearfix">
+        <form action="">
+            <div><strong class="fl"><i class="fa fa-coffee"></i>Take an order now</strong><input type="radio" name="tim">
+                <strong style="left: 430px;position: relative;" class="fl">
+                    <select name="">
+                        <option value="">selection period</option>
+                        <option value="">half an hour</option>
+                        <option value="">an hour</option>
+                        <option value="">two hour</option>
+                    </select>
+                    Select pick up time<i class="fa fa-coffee"></i><input type="radio" name="tim">
+                </strong>
+            </div>
+        </form>
+
+    </div>
+    <div class="payContent clearfix" style="padding-bottom: 0;background-color: rgb(248, 248, 248)">
+        <div>
+            <hr>
+            <strong class="fl" style="">Do you need to pack<input type="checkbox"></strong>
+            <strong style="left: 240px;position: relative;" class="fl">
+                If you need tableware, you can contact the in-store barista for consultation<i class="fa fa-pagelines" style="color: rgb(66, 176, 106)"></i><input type="checkbox">
+            </strong>
+        </div>
+        <br>
+    </div>
+
+    <div style="background-color: rgb(248, 248, 248)">
+
+        <hr>
+        <div class="payContent clearfix">
+            star&coupon
+            <strong style="left: 620px;position: relative;color:white;padding: 12px;background-color:rgb(66, 176, 106);  border-radius: 50px"
+                    class="fl">
+                Try the recommended plan <br></strong>
+            <hr>
+            <span style="font-weight: bold;font-size: 18px;">Use Stars</span>
+            <span style="left: 660px;position: relative;font-weight: bold;font-size: 18px">Use Coupon</span>
+            <br><span><i class="fa fa-star" style="color: rgb(188, 168, 93)"></i>1 star available</span>
+            <span style="left: 570px;position: relative;">Three coupons available <i class="fa fa-ticket"
+                                                                     style="color: rgb(72, 178, 110)"></i></span>
+
+
+            <!--        <hr>-->
+        </div>
+
+    </div>
+    <br>
+    <div style="background-color: rgb(248, 248, 248)">
+        <div style="">
+            <div class="payContent clearfix"
+                 style="padding-bottom: 0;font-size: 16px;border-bottom: 2px rgb(231,231,231) solid;margin: 2px;padding-bottom:10px">
+                payment method
+            </div>
+            <strong>
+
+                <div class="payContent">
+                    <div class="unionpayList ">
+                        <i class="fa fa-weixin" style="color: rgb(96, 163, 74)"></i><span class="unionpay2">WeChat Pay</span>
+                        <span class=" unionPrice">Pay&nbsp;<strong class="fontsize">$60.00</strong></span>
+                    </div>
+                    <div class="unionpayList  ">
+                        <i class="fa fa-credit-card" style="color: rgb(15, 106, 54)"></i><span class="unionpay2">credit card</span>
+                        <span class="unionPrice ">Pay&nbsp;<strong class="fontsize">$60.00</strong></span>
+                    </div>
+                    <div class="unionpayList  ">
+                        <i class="fa fa-paypal" style="color: rgb(0, 94, 166)"></i><span class="  unionpay2">paypal</span>
+                        <span class="unionPrice ">Pay&nbsp;<strong class="fontsize">$60.00</strong></span>
+                    </div>
+                    <div class="unionpayList  ">
+                        <i class="fa fa-google-wallet" style="color: rgb(211, 131, 55)"></i><span class="  unionpay2">Google Wallet</span>
+                        <span class="unionPrice ">Pay&nbsp;<strong class="fontsize">$60.00</strong></span>
+                    </div>
+                </div>
+
+            </strong>
+        </div>
+    </div>
+    <br>
+    <div class=" clearfix" style="">
+        <a href="/success.html" class="fl "
+           style="left: 450px;position: relative;color:white;padding: 10px 20px;background-color:rgb(66, 176, 106);  border-radius: 50px">confirm</a>
+        <a href="/project1_war_exploded/" class="fl"
+           style="left: 230px;position: relative; color:black;padding:10px 20px;border: 1px solid grey;  border-radius: 50px">&nbsp;&nbsp;cancel &nbsp;&nbsp;</a>
+        <br>
+        <br>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.4.1.js"></script>
+<script>
+    $(".unionpayList").click(function () {
+        $(".unionpayList").removeClass("activeBtn");
+        $(this).addClass("activeBtn")
+    })
+</script>
+</body>
+</html>
