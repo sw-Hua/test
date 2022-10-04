@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>order management</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div><h2>order management</h2></div>
+  <div class="m-3">
+    <a class = "h3" th:href="@{/orders/new}">Add new order</a>
+  </div>
+  <div th:if="${message}" class="alert alert-success text-center">The order has been saved successfully</div>
+  <div>
+    <table class = "table table-striped">
+      <thead class = "thead-light">
+      <tr>
+        <th>Order ID</th>
+        <th>Customer Account</th>
+        <th>Product name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>VIP</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="order : ${listOrders}">
+        <tr>
+          <td>[[${order.OrderID}]]</td>
+          <td>[[${order.CustomerEmail}]]</td>
+          <td>[[${order.ProductName}]]</td>
+          <td>[[${order.Quantity}]]</td>
+          <td>[[${order.Price}]]</td>
+          <td>[[${order.Vip}]]</td>
+          <td>
+            <a class="h5 mr-2"th:href="@{'/orders/edit/' + ${order.OrderID}}">Edit</a>
+          </td>
+          <td>
+            <a class="h5 mr-2"th:href="@{'/orders/delete/' + ${order.OrderID}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
