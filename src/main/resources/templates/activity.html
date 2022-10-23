@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Premium</title>
+    <!--    <link rel="stylesheet" href="main.css"/>-->
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+</head>
+<script type="text/javascript" src="sidebar.js"></script>
+
+<body>
+<div class="app">
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <h3>Restaurant Premium</h3>
+
+        <nav class="menu">
+            <a href="/about" class="menu-item" id="menu">About</a>
+            <a href="/premium" class="menu-item">Premium</a>
+            <a href="/portfolio" class="menu-item">Portfolio</a>
+            <a href="/payment" class="menu-item">Payment</a>
+            <a href="/activity" class="menu-item is-active">Activity</a>
+            <a href="/reward" class="menu-item">Reward</a>
+            <a href="/vipMain" class="menu-item " id="menu">Home</a>
+        </nav>
+
+    </aside>
+    <main class="content" id="content1">
+        <h2>How many vouchers are in your account? [[${listActivity.size()}]]</h2>
+        <h3>Detail Information</h3>
+
+        <table class="table table-striped table-hover myTable">
+
+            <thead class="myThead">
+            <tr>
+                <th>Voucher ID</th>
+                <th>User ID</th>
+                <th>Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="activity : ${listActivity}">
+                <tr>
+                    <td>[[${activity.voucherID}]]</td>
+                    <td>[[${activity.userID}]]</td>
+                    <td class="table_a">
+                        <a th:href="@{'/payment'}">Redeem now</a>
+                    </td>
+                </tr>
+
+            </th:block>
+            </tbody>
+        </table>
+    </main>
+</div>
+
+</body>
+
+</html>

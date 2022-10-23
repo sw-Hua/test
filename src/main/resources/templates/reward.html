@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Premium</title>
+    <!--    <link rel="stylesheet" href="main.css"/>-->
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+</head>
+<script type="text/javascript" src="sidebar.js"></script>
+
+
+<body>
+<div class="app">
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <h3>Restaurant Premium</h3>
+
+        <nav class="menu">
+            <a href="/about" class="menu-item" id="menu">About</a>
+            <a href="/premium" class="menu-item">Premium</a>
+            <a href="//portfolio" class="menu-item">Portfolio</a>
+            <a href="/payment" class="menu-item">Payment</a>
+            <a href="/activity" class="menu-item">Activity</a>
+            <a href="/reward" class="menu-item is-active">Reward</a>
+            <a href="/vipMain" class="menu-item" id="menu">Home</a>
+        </nav>
+
+    </aside>
+
+
+    <main class="content" id="content1">
+
+        <!--        进度条-->
+        <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+
+        <script language="JavaScript">
+            $(document).ready(function () {
+                var colors = Highcharts.getOptions().colors;
+                var currentNum = document.getElementById("pointNumber").innerText
+                var restNum = 2000 - currentNum
+                var categories = [restNum, currentNum];
+
+                var currentPer = currentNum / 2000
+                var restPer = restNum / 2000
+                var data = [{
+                    y: currentPer * 1000,
+                    color: colors[0],
+                    drilldown: {
+                        name: '',
+                        categories: ['Current Points'],
+                        data: [currentPer * 100],
+                        color: colors[0]
+                    }
+                }, {
+                    y: restPer * 1000,
+                    color: colors[1],
+                    drilldown: {
+                        name: '',
+                        categories: ['Rest Points'],
+                        data: [restPer * 100],
+                        color: colors[1]
+                    }
+                }];
+                var rewardPointsData = [];
+                var versionsData = [];
+                var i, j;
+                var dataLen = data.length;
+                var drillDataLen;
+                var brightness;
+
+
+                // Build the data arrays
+                for (i = 0; i < dataLen; i += 1) {
+                    // add browser data
+                    rewardPointsData.push({
+                        name: categories[i],
+                        y: data[i].y,
+                        color: data[i].color
+                    });
+
+                    // add version data
+                    drillDataLen = data[i].drilldown.data.length;
+                    for (j = 0; j < drillDataLen; j += 1) {
+                        brightness = 0.2 - (j / drillDataLen) / 5;
+                        versionsData.push({
+                            name: data[i].drilldown.categories[j],
+                            y: data[i].drilldown.data[j],
+                            color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                        });
+                    }
+                }
+
+                var chart = {
+                    type: 'pie'
+                };
+                var title = {
+                    text: 'Rewards Point System'
+                };
+                var yAxis = {
+                    title: {
+                        text: 'Total percent market share'
+                    }
+                };
+                var tooltip = {
+                    valueSuffix: '%'
+                };
+                var plotOptions = {
+                    pie: {
+                        shadow: false,
+                        center: ['50%', '50%']
+                    }
+                };
+                var series = [{
+                    name: 'RewarsPoints',
+                    data: rewardPointsData,
+                    size: '0%',
+                    dataLabels: {
+                        formatter: function () {
+                            return this.y > 5 ? this.point.name : null;
+                        },
+                        color: 'white',
+                        distance: -30
+                    }
+                }, {
+                    name: 'Percentage',
+                    data: versionsData,
+                    size: '80%',
+                    innerSize: '60%',
+                    dataLabels: {
+                        formatter: function () {
+                            // display only if larger than 1
+                            return this.y > 1 ? '' + this.point.name + ': ' + this.y + '%' : null;
+                        }
+                    }
+                }
+                ];
+
+                var json = {};
+                json.chart = chart;
+                json.title = title;
+                json.yAxis = yAxis;
+                json.tooltip = tooltip;
+                json.series = series;
+                json.plotOptions = plotOptions;
+                $('#container').highcharts(json);
+            });
+        </script>
+
+        <!-- 导航栏 -->
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Feel free to use to redeem your vouchers!</h1>
+                <p>Use your vouchers on your bill anytime, anywhere。</p>
+                <p>
+                    <th:block th:each="pointSystem : ${pointSystem}">
+                        <a class="btn btn-primary btn-lg" role="button"
+                           th:href="@{'/reward/redeem/' + ${pointSystem.pointSystemID}}">
+                            Redeem Now</a>
+                    </th:block>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="text-center">
+            <h2 id="pointNumber" style="color: white; text-indent:-9999px;">[[${pointSystem.getPointNumber()}]]</h2>
+        </div>
+        <h1 style="color: white; text-indent:-9999px;">[[${pointSystem.pointSystemID}]]</h1>
+    </main>
+
+</div>
+
+</body>
+
+</html>
+
+

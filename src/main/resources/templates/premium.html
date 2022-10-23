@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Premium</title>
+    <!--    <link rel="stylesheet" href="main.css"/>-->
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/premium.css}" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+</head>
+<script type="text/javascript" src="sidebar.js"></script>
+
+<body>
+
+
+<div class="app">
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <h3>Restaurant Premium</h3>
+
+        <nav class="menu">
+            <a href="/about" class="menu-item" id="menu">About</a>
+            <a href="/premium" class="menu-item is-active">Premium</a>
+            <a href="/portfolio" class="menu-item">Portfolio</a>
+            <a href="/payment" class="menu-item">Payment</a>
+            <a href="/activity" class="menu-item">Activity</a>
+            <a href="/reward" class="menu-item">Reward</a>
+            <a href="/vipMain" class="menu-item " id="menu">Home</a>
+        </nav>
+
+    </aside>
+
+
+    <main class="content" id="content1">
+
+        <div class="myImg"><img th:src="@{images/kitchen.jpg}" class="img-rounded"></div>
+
+        <div class="premium-top">
+            <div class="p-title1">Premium ——</div>
+            <div class="p-title2">Enjoy exclusive and our professional services!</div>
+            <a href="/about"><button type="button" class="btn btn-success" href="/about">More about us</button></a>
+            <div class="flex">
+                <div class="flex1">
+                    <div>Preferential strength</div>
+                    <div c>Incredible offer!</div>
+                </div>
+                <div class="flex1">
+                    <div>Member Activities</div>
+                    <div>rich activities</div>
+                </div>
+                <div class="flex1">
+                    <div>Reservation function</div>
+                    <div>More users choose</div>
+                </div>
+                <div class="flex1">
+                    <div>points increase</div>
+                    <div>Increase the capacity</div>
+                </div>
+            </div>
+            <div class="p-title3">Find your perfect plan</div>
+        </div>
+        <div class="flexTable">
+            <table class="table table-striped table-bordered table-hover"
+                   style="text-align: center; width: 1000px;">
+                <caption class="text-center">Choose Premium between annual and monthly billing</caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Free
+                    </th>
+                    <th>Starter
+                        <div><a th:href="@{/premium/newPlan/1}"><button type="button"
+                                                                        class="btn btn-default">Try Now</button></a></div>
+                    </th>
+                    <th>Advanced
+                        <div><a th:href="@{/premium/newPlan/2}"><button type="button"
+                                                                        class="btn btn-warning">Start Now</button></a></div>
+                    </th>
+                    <th>Ultimate
+                        <div><a th:href="@{/premium/newPlan/3}"><button type="button"
+                                                                        class="btn btn-default">Buy Now</button></a></div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Price</td>
+                    <td>Free</td>
+                    <td>$10/Month</td>
+                    <td>$20/Month</td>
+                    <td>$30/Month</td>
+                </tr>
+                <tr>
+                    <td>Discount</td>
+                    <td>90%</td>
+                    <td>85%</td>
+                    <td>85%</td>
+                    <td>80%</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td>No activity</td>
+                    <td>1 time a week</td>
+                    <td>2 time a week</td>
+                    <td>no limit</td>
+                </tr>
+                <tr>
+                    <td>reservation</td>
+                    <td>No appointment function</td>
+                    <td>Make an appointment once a week</td>
+                    <td>Make an appointment twice a week</td>
+                    <td>no limit</td>
+                </tr>
+                <tr>
+                    <td>Points added</td>
+                    <td>1000</td>
+                    <td>2000</td>
+                    <td>3000</td>
+                    <td>4000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="myCarousel" class="carousel slide mySlide">
+            <!-- carousel（Carousel）index -->
+            <ol class="carousel-indicators">
+                <li data-target="" data-slide-to="0" class="active"></li>
+                <li data-target="" data-slide-to="1"></li>
+                <li data-target="" data-slide-to="2"></li>
+            </ol>
+            <!-- Carousel Project（Carousel -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div>
+                        <h4 style="color: white">Experience cooking</h4>
+                    </div>
+                    <div>We ate at this kaiseki restaurant, the chef prepared a total of 11 delicious meals, and the
+                        chef explained the dishes, which my wife and I thought were delicious and exquisite.</div>
+                    <div>——Reviews from Travelers</div>
+                    <!--                    <div class="carousel-caption">1</div>-->
+                </div>
+                <div class="item">
+                    <div>
+                        <h4 style="color: white">Not to be missed when pairing with sake</h4>
+                    </div>
+                    <div>Highly recommend the sake that can be paired with a kaiseki dinner. It rounded out our
+                        dining experience at the (Ise Sueyoshi) restaurant, although we weren't quite sure what we
+                        missed.</div>
+                    <div>——Reviews from Travelers</div>
+
+                    <!--                    <div class="carousel-caption">2</div>-->
+                </div>
+                <div class="item">
+                    <div>
+                        <h4 style="color: white">Excellent service, delicious food</h4>
+                    </div>
+                    <div>After reading many reviews, I brought my family, my mother and younger brother, to my
+                        mother's birthday dinner. It was perfect and exceeded all my expectations. very happy.</div>
+                    <div>——Reviews from Travelers</div>
+                    <!--                    <div class="carousel-caption">3</div>-->
+                </div>
+            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!--<div class="container-fluid">-->
+<!--    <div class="text-center">-->
+<!--        <h2>[[${pageTitle}]]</h2>-->
+<!--    </div>-->
+<!--    <form th:action="@{/vipUsers/save}" method="post" th:object="${vipUser}"-->
+<!--          style="max-width: 500px; margin: 0 auto;">-->
+<!--        &lt;!&ndash;这里实在controller 里面新增设置的vipUser&ndash;&gt;-->
+<!--        <input type="hidden" th:field="*{vipID}">-->
+<!--        &lt;!&ndash;很重要不能漏&ndash;&gt;-->
+<!--        <div class="border border-secondary rounded p-3">-->
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-4 col-form-label">Email:</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="email" th:field="*{email}" class="form-control" required minlength="4"-->
+<!--                           maxlength="45" />-->
+<!--                    &lt;!&ndash;这里对应的是entity的email&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-4 col-form-label">VIP Name:</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="text" th:field="*{vipName}" class="form-control" required maxlength="45" />-->
+<!--                    &lt;!&ndash;这里对应的是entity的email&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="text-center">-->
+<!--                <button type="submit" class="btn btn-primary">Save</button>-->
+<!--                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    function cancelForm () {-->
+<!--        window.location = "[[@{/vipMain}]]";-->
+<!--    }-->
+
+<!--</script>-->
+
+</body>
+
+</html>

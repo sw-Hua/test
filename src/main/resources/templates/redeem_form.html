@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coupon redemption</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+
+
+<div class="mydiv2">
+    <!--    <div class="alert alert-success text-center" id="succAlert" style="display: none">-->
+    <!--        兑换成功, 立刻提交!-->
+    <!--    </div>-->
+
+    <!--        进度条-->
+
+    <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+
+    <script language="JavaScript">
+        $(document).ready(function () {
+            var colors = Highcharts.getOptions().colors;
+            var currentNum = document.getElementById("pointNumber").innerText
+            console.log(document.getElementById("pointNumber"))
+            var restNum = 2000 - currentNum
+            var categories = [restNum, currentNum];
+
+            var currentPer = currentNum / 2000
+            var restPer = restNum / 2000
+            var data = [{
+                y: currentPer * 1000,
+                color: colors[0],
+                drilldown: {
+                    name: '',
+                    categories: ['Current Points'],
+                    data: [currentPer * 100],
+                    color: colors[0]
+                }
+            }, {
+                y: restPer * 1000,
+                color: colors[1],
+                drilldown: {
+                    name: '',
+                    categories: ['Rest Points'],
+                    data: [restPer * 100],
+                    color: colors[1]
+                }
+            }];
+            var rewardPointsData = [];
+            var versionsData = [];
+            var i, j;
+            var dataLen = data.length;
+            var drillDataLen;
+            var brightness;
+
+
+            // Build the data arrays
+            for (i = 0; i < dataLen; i += 1) {
+                // add browser data
+                rewardPointsData.push({
+                    name: categories[i],
+                    y: data[i].y,
+                    color: data[i].color
+                });
+
+                // add version data
+                drillDataLen = data[i].drilldown.data.length;
+                for (j = 0; j < drillDataLen; j += 1) {
+                    brightness = 0.2 - (j / drillDataLen) / 5;
+                    versionsData.push({
+                        name: data[i].drilldown.categories[j],
+                        y: data[i].drilldown.data[j],
+                        color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                    });
+                }
+            }
+
+            var chart = {
+                type: 'pie'
+            };
+            var title = {
+                text: 'Rewards Point System'
+            };
+            var yAxis = {
+                title: {
+                    text: 'Total percent market share'
+                }
+            };
+            var tooltip = {
+                valueSuffix: '%'
+            };
+            var plotOptions = {
+                pie: {
+                    shadow: false,
+                    center: ['50%', '50%']
+                }
+            };
+            var series = [{
+                name: 'RewarsPoints',
+                data: rewardPointsData,
+                size: '0%',
+                dataLabels: {
+                    formatter: function () {
+                        return this.y > 5 ? this.point.name : null;
+                    },
+                    color: 'white',
+                    distance: -30
+                }
+            }, {
+                name: 'Percentage',
+                data: versionsData,
+                size: '80%',
+                innerSize: '60%',
+                dataLabels: {
+                    formatter: function () {
+                        // display only if larger than 1
+                        return this.y > 1 ? '' + this.point.name + ': ' + this.y + '%' : null;
+                    }
+                }
+            }
+            ];
+
+            var json = {};
+            json.chart = chart;
+            json.title = title;
+            json.yAxis = yAxis;
+            json.tooltip = tooltip;
+            json.series = series;
+            json.plotOptions = plotOptions;
+            $('#container').highcharts(json);
+        });
+    </script>
+
+    <div class="text-center">
+
+        <h1>Please enter the quantity to be redeemed for the 10% off coupon：</h1>
+        <p>Each coupon requires 200 points：</p>
+        <input id="voucherInput" type="number" disabled value="1" class="form-control" style="width: 50%; margin-left: 26%;">
+
+
+        <button type="button" onclick="voucherFuc()" class="btn btn-success"
+                style="margin-top: 20px">Submit</button>
+        <button type="button" onclick="back()" class="btn btn-default" style="margin-top: 20px">Cancel</button>
+    </div>
+
+    <form th:action="@{/reward/redeem/completed}" method="post" th:object="${pointSystem}"
+          style="max-width: 500px; margin: 0 auto;" id="pointSystemForm">
+        <!--Here is the newly added vipUser in the controller-->
+        <input type="hidden" th:field="*{pointSystemID}">
+        <div class="border border-secondary rounded p-3">
+
+            <div class="form-group row">
+                <div class="col-sm-8">
+                    <input type="hidden" th:field="*{userID}" class="form-control" required maxlength="45" />
+                    <!--This corresponds to the entity's email-->
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <!--            <label class="col-sm-4 col-form-label">Point Number:</label>-->
+
+                <div class="col-sm-8">
+                    <input type="hidden" th:field="*{pointNumber}" id="pNum" class="form-control" minlength="4"
+                           maxlength="45" max="2000" min="0" />
+                    <!--This corresponds to the pointNumber of the entity-->
+                </div>
+            </div>
+
+            <!--        <div class="text-center">-->
+            <!--            <button type="submit" class="btn btn-primary">Submit</button>-->
+            <!--            <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>-->
+            <!--        </div>-->
+
+        </div>
+    </form>
+
+
+
+
+</div>
+
+<form class="form-horizontal" role="form" method="post" th:object="${pointSystem}">
+    <input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+    <input type="text" class="form-control" id="lastname" placeholder="请输入姓">
+    <button type="submit" class="btn btn-default">更新</button>
+</form>
+
+
+<h1 style="color: white; text-indent:-9999px;">[[${pointSystem}]]</h1>
+<!--text-indent:-9999px; Indicates that it is hidden and not displayed, but the value is still stored. It is set to white to facilitate subsequent testing and debugging.-->
+<h2 id="pointNumber" style="color: white; text-indent:-9999px;">[[${pointSystem.getPointNumber()}]]</h2>
+
+
+<script type="text/javascript">
+    function cancelForm () {
+        window.location = "[[@{/reward}]]";
+    }
+
+
+    function voucherFuc () {
+        var voucherNum = document.getElementById("voucherInput").value; // get voucherNum
+        var totoalCreditNum = voucherNum * 200   // Get the CreditNum of this total consumption
+        var pointNumber = document.getElementById("pointNumber").innerText // The total value in the database
+
+        if (totoalCreditNum <= pointNumber) {
+            document.getElementById("pNum").value -= totoalCreditNum
+            document.getElementById("pointSystemForm").submit();
+        } else {
+            alert("Insufficient points to redeem!")
+        }
+    }
+
+    function back () {
+        window.location.href = "[[@{/reward}]]";
+    }
+
+
+</script>
+
+<style>
+    .mydiv2 {
+        padding: 20px;
+        margin: 100px auto auto auto;
+        width: 800px;
+        text-align: center;
+        box-shadow: 0 0 10px #E0EEEE;
+        border-radius: 10px;
+    }
+</style>
+</body>
+
+</html>
