@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coupon redemption</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="myForm">
+        <div class="text-center mytext">
+            <h2>Modify your personal content</h2>
+            <h4>The entered email needs to be verified for the update to succeed</h4>
+        </div>
+        <form th:action="@{/portfolio/save}" method="post" th:object="${Portfolio}"
+              style="max-width: 500px; margin: 0 auto;">
+            <!--这里实在controller 里面新增设置的vipUser-->
+            <!--很重要不能漏-->
+
+            <div class="border border-secondary rounded p-3">
+                <div class="form-group row">
+
+                    <div class="col-sm-8">
+                        <input type="hidden" th:field="*{ID}" class="form-control" id="inputID"  required />
+                        <!--这里对应的是entity的email-->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-8">
+                        <input type="hidden" th:field="*{userID}" class="form-control" id="inputUserID"  required />
+                        <!--这里对应的是entity的email-->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">User Name:</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{userName}" class="form-control" id="inputUserName" placeholder="" required />
+                        <!--这里对应的是entity的email-->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">User Email:</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{userEmail}" class="form-control" id="inputUserEmail" placeholder="" required />
+                        <!--这里对应的是entity的email-->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Address:</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{Address}" class="form-control" id="inputAddress" placeholder="" required />
+                        <!--这里对应的是entity的email-->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Phone:</label>
+                    <div class="col-sm-8">
+                        <input type="number" th:field="*{Phone}" id="inputPhone" class="form-control" required placeholder="" />
+                        <!--这里对应的是entity的email-->
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
+                </div>
+
+            </div>
+        </form>
+        <h4 class="hiddenText" id="getID">[[${Portfolio.getID()}]]</h4>
+        <h4 class="hiddenText" id="getUserID">[[${Portfolio.getUserID()}]]</h4>
+        <h4 class="hiddenText" id="getUserName">[[${Portfolio.getUserName()}]]</h4>
+        <h4 class="hiddenText" id="getUserEmail">[[${Portfolio.getUserEmail()}]]</h4>
+        <h4 class="hiddenText" id="getAddress">[[${Portfolio.getAddress()}]]</h4>
+        <h4 class="hiddenText" id="getPhone">[[${Portfolio.getPhone()}]]</h4>
+    </div>
+</div>
+<script type="text/javascript">
+    function cancelForm () {
+        window.location = "[[@{/portfolio}]]";
+    }
+
+    window.onload = function () {
+
+        document.getElementById("inputID").value = parseInt(document.getElementById("getID").innerText)
+
+        document.getElementById("inputUserID").placeholder = document.getElementById("getUserID").innerText
+        document.getElementById("inputUserID").value = parseInt(document.getElementById("getUserID").innerText)
+
+        document.getElementById("inputUserName").placeholder = document.getElementById("getUserName").innerText
+
+        document.getElementById("inputUserEmail").placeholder = document.getElementById("getUserEmail").innerText
+        document.getElementById("inputAddress").placeholder = document.getElementById("getAddress").innerText
+        document.getElementById("inputPhone").placeholder = document.getElementById("getPhone").innerText
+
+        // alert("页面加载完成====》onload");
+    }
+
+</script>
+<style>
+    .myForm {
+        margin-top: 100px;
+        margin-left: 15%;
+        padding: 20px;
+        border-radius: 20px;
+        width: 70%;
+        height: 500px;
+        text-align: center;
+        box-shadow: 0 0 50px #F3F1F1
+    }
+
+    .mytext {
+        margin-top: 50px;
+    }
+
+    .hiddenText{
+        color: white; text-indent:-9999px;
+    }
+
+
+</style>
+
+</body>
+
+</html>

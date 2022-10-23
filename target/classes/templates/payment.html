@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Premium</title>
+    <!--    <link rel="stylesheet" href="main.css"/>-->
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+</head>
+<script type="text/javascript" src="sidebar.js"></script>
+
+<body>
+<div class="app">
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <h3>Restaurant Premium</h3>
+
+        <nav class="menu">
+            <a href="/about" class="menu-item" id="menu">About</a>
+            <a href="/premium" class="menu-item">Premium</a>
+            <a href="/portfolio" class="menu-item">Portfolio</a>
+            <a href="/payment" class="menu-item is-active">Payment</a>
+            <a href="/activity" class="menu-item">Activity</a>
+            <a href="/reward" class="menu-item">Reward</a>
+            <a href="/vipMain" class="menu-item " id="menu">Home</a>
+        </nav>
+
+    </aside>
+
+    <div class="container">
+        <div th:if="${message}" class="alert alert-danger text-center">
+            [[${message}]]
+        </div>
+
+        <div th:if="${messageSuccess}" class="alert alert-success text-center">
+            [[${messageSuccess}]]
+        </div>
+        <script>
+
+        </script>
+        <h3 class="title"> Restaurant Menu </h3>
+        <div class="products-container">
+
+            <div class="product" data-name="p-1">
+                <img src="images/manyufan.jpg" alt="">
+                <h3>Grilled Eel Rice</h3>
+                <div class="price">$22.00</div>
+            </div>
+
+            <div class="product" data-name="p-2">
+                <img src="images/lamian.jpg" alt="">
+                <h3>Ramen</h3>
+                <div class="price">$17.00</div>
+            </div>
+
+            <div class="product" data-name="p-3">
+                <img src="images/cishengPingpan.jpg" alt="">
+                <h3>Sashimi Platter</h3>
+                <div class="price">$34.00</div>
+            </div>
+
+            <div class="product" data-name="p-4">
+                <img src="images/jingqiangyu.jpg" alt="">
+                <h3>Tuna Sashimi</h3>
+                <div class="price">$24.00</div>
+            </div>
+
+            <div class="product" data-name="p-5">
+                <img src="images/sanwenyu.jpg" alt="">
+                <h3>Salmon sashimi</h3>
+                <div class="price">$22.00</div>
+            </div>
+
+            <div class="product" data-name="p-6">
+                <img src="images/heniu.jpg" alt="">
+                <h3>Wagyu Steak</h3>
+                <div class="price">$45.00</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="products-preview">
+
+        <div class="preview" data-target="p-1">
+            <i class="fas fa-times"></i>
+            <img src="images/manyufan.jpg" alt="">
+            <h3>Grilled Eel Rice with Teriyaki Sauce</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>( Current Voucher Number: [[${numOfVoucher}]] )</span>
+
+            </div>
+            <p>It consists of a donburi type large bowl filled with steamed white rice</p>
+            <div class="price">$22.00</div>
+            <form class="form-horizontal" role="form" method="get" th:action="@{/payment/completed}" th:object="${activity}">
+
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input  type="number" th:field="*{voucherID}" class="form-control" id="voucherID"  placeholder="Please type Voucher ID">
+                        <input type="hidden" value th:field="*{userID}" class="form-control" id="userIDInput" >
+                        <input type="hidden" th:field="*{productName}" class="form-control" id="productName" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mydiv" >
+
+                        <button type="submit" class="btn btn-default mybtn" hidden>Redeem Voucher</button>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="preview" data-target="p-2">
+            <i class="fas fa-times"></i>
+            <img src="images/lamian.jpg" alt="">
+            <h3>Ramen</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>( Current Voucher Number: [[${numOfVoucher}]] )</span>
+            </div>
+            <p>Ramen flavors are soy sauce and miso, with typical toppings including sliced pork</p>
+            <div class="price">$17.00</div>
+            <form class="form-horizontal" role="form" method="get" th:action="@{/payment/completed}" th:object="${activity}">
+
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input  type="number" th:field="*{voucherID}" class="form-control" id="voucherID"  placeholder="Please type Voucher ID">
+                        <input type="hidden" value th:field="*{userID}" class="form-control" id="userIDInput" >
+                        <input type="hidden" th:field="*{productName}" class="form-control" id="productName" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mydiv">
+
+                        <button type="submit" class="btn btn-default mybtn" hidden>Redeem Voucher</button>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="preview" data-target="p-3">
+            <i class="fas fa-times"></i>
+            <img src="images/cishengPingpan.jpg" alt="">
+            <h3>RamenSashimi Platter</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>( Current Voucher Number: [[${numOfVoucher}]] )</span>
+            </div>
+            <p>Sashimi is consisting of fresh raw fish or meat sliced into thin pieces and often eaten with soy sauce.</p>
+            <div class="price">$34.00</div>
+            <form class="form-horizontal" role="form" method="get" th:action="@{/payment/completed}" th:object="${activity}">
+
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input  type="number" th:field="*{voucherID}" class="form-control" id="voucherID"  placeholder="Please type Voucher ID">
+                        <input type="hidden" value th:field="*{userID}" class="form-control" id="userIDInput" >
+                        <input type="hidden" th:field="*{productName}" class="form-control" id="productName" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mydiv" >
+
+                        <button type="submit" class="btn btn-default mybtn" hidden>Redeem Voucher</button>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="preview" data-target="p-4">
+            <i class="fas fa-times"></i>
+            <img src="images/jingqiangyu.jpg" alt="">
+            <h3>Tuna Sashimi</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>( Current Voucher Number: [[${numOfVoucher}]] )</span>
+            </div>
+            <p>Sashimi is consisting of fresh raw fish or meat sliced into thin pieces and often eaten with soy sauce.</p>
+            <div class="price">25.00</div>
+            <form class="form-horizontal" role="form" method="get" th:action="@{/payment/completed}" th:object="${activity}">
+
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input  type="number" th:field="*{voucherID}" class="form-control" id="voucherID"  placeholder="Please type Voucher ID">
+                        <input type="hidden" value th:field="*{userID}" class="form-control" id="userIDInput" >
+                        <input type="hidden" th:field="*{productName}" class="form-control" id="productName" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mydiv">
+
+                        <button type="submit" class="btn btn-default mybtn" hidden>Redeem Voucher</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="preview" data-target="p-5">
+            <i class="fas fa-times"></i>
+            <img src="images/sanwenyu.jpg" alt="">
+            <h3>Salmon sashimi</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>( Current Voucher Number: [[${numOfVoucher}]] )</span>
+            </div>
+            <p>Sashimi is consisting of fresh raw fish or meat sliced into thin pieces and often eaten with soy sauce.</p>
+            <div class="price">$22.00</div>
+            <form class="form-horizontal" role="form" method="get" th:action="@{/payment/completed}" th:object="${activity}">
+
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input  type="number" th:field="*{voucherID}" class="form-control" id="voucherID"  placeholder="Please type Voucher ID">
+                        <input type="hidden" value th:field="*{userID}" class="form-control" id="userIDInput" >
+                        <input type="hidden" th:field="*{productName}" class="form-control" id="productName" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mydiv">
+
+                        <button type="submit" class="btn btn-default mybtn" hidden>Redeem Voucher</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="preview" data-target="p-6">
+            <i class="fas fa-times"></i>
+            <img src="images/heniu.jpg" alt="">
+            <h3>Wagyu Steak</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>( Current Voucher Number: [[${numOfVoucher}]] )</span>
+            </div>
+            <p>Olive Wagyu comes from cattle raised on a small Japanese island called Shodoshima</p>
+            <div class="price">$45.00</div>
+
+            <form class="form-horizontal" role="form" method="get" th:action="@{/payment/completed}" th:object="${activity}">
+
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input  type="number" th:field="*{voucherID}" class="form-control" id="voucherID"  placeholder="Please type Voucher ID">
+                        <input type="hidden" value th:field="*{userID}" class="form-control" id="userIDInput" >
+                        <input type="hidden" th:field="*{productName}" class="form-control" id="productName" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mydiv">
+
+                        <button type="submit" class="btn btn-default mybtn" hidden>Redeem Voucher</button>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+    <h1 id="userID" style="color: white; text-indent:-9999px;">[[${userId}]]</h1>
+
+
+
+</div>
+
+</body>
+<script>
+
+    window.onload = function () {
+
+        document.getElementById("userIDInput").value = parseInt(document.getElementById("userID").innerText)
+
+
+        // alert("页面加载完成====》onload");
+    }
+
+
+    let preveiwContainer = document.querySelector('.products-preview');
+    let previewBox = preveiwContainer.querySelectorAll('.preview');
+
+    document.querySelectorAll('.products-container .product').forEach(product =>{
+        product.onclick = () =>{
+            preveiwContainer.style.display = 'flex';
+            let name = product.getAttribute('data-name');
+            previewBox.forEach(preview =>{
+                let target = preview.getAttribute('data-target');
+                if(name == target){
+                    preview.classList.add('active');
+                }
+            });
+        };
+    });
+
+    previewBox.forEach(close =>{
+        close.querySelector('.fa-times').onclick = () =>{
+            close.classList.remove('active');
+            preveiwContainer.style.display = 'none';
+        };
+    });
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+    *{
+        font-family: 'Nunito', sans-serif;
+        margin:0; padding:0;
+        box-sizing: border-box;
+        outline: none; border:none;
+        text-decoration: none;
+        transition: all .2s linear;
+        text-transform: capitalize;
+    }
+
+    html{
+        font-size: 62.5%;
+        overflow-x: hidden;
+    }
+
+    body{
+        background: #eee;
+    }
+
+    .container{
+        max-width: 1200px;
+        margin:0 auto;
+        padding:3rem 2rem;
+    }
+
+    .container .title{
+        font-size: 3.5rem;
+        color:#444;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .container .products-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap:2rem;
+    }
+
+    .container .products-container .product{
+        text-align: center;
+        padding:3rem 2rem;
+        background: #fff;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+        outline: .1rem solid white;
+        outline-offset: -1.5rem;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .container .products-container .product:hover{
+        outline: .2rem solid white;
+        outline-offset: 0;
+    }
+
+    .container .products-container .product img{
+        height: 25rem;
+    }
+
+    .container .products-container .product:hover img{
+        transform: scale(.9);
+    }
+
+    .container .products-container .product h3{
+        padding:.5rem 0;
+        font-size: 2rem;
+        color:#444;
+    }
+
+    .container .products-container .product:hover h3{
+        color:#3bba9c;
+    }
+
+    .container .products-container .product .price{
+        font-size: 2rem;
+        color:#444;
+    }
+
+    .products-preview{
+        position: fixed;
+        top:0; left:0;
+        min-height: 100vh;
+        width: 100%;
+        background: rgba(0,0,0,.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .products-preview .preview{
+        display: none;
+        padding:2rem;
+        text-align: center;
+        background: #fff;
+        position: relative;
+        margin:2rem;
+        width: 40rem;
+        border-radius: 10px;
+    }
+
+    .products-preview .preview.active{
+        display: inline-block;
+    }
+
+    .products-preview .preview img{
+        height: 30rem;
+    }
+
+    .products-preview .preview .fa-times{
+        position: absolute;
+        top:1rem; right:1.5rem;
+        cursor: pointer;
+        color:#444;
+        font-size: 4rem;
+    }
+
+    .products-preview .preview .fa-times:hover{
+        transform: rotate(90deg);
+    }
+
+    .products-preview .preview h3{
+        color:#444;
+        padding:.5rem 0;
+        font-size: 2.5rem;
+    }
+
+    .products-preview .preview .stars{
+        padding:1rem 0;
+        font-size: 1.7rem;
+    }
+
+    .products-preview .preview .stars i{
+        color: #3bba9c;
+    }
+
+    .products-preview .preview .stars span{
+        color:#999;
+    }
+
+    .products-preview .preview p{
+        line-height: 1.5;
+        padding:1rem 0;
+        font-size: 1.6rem;
+        color:#777;
+    }
+
+    .products-preview .preview .price{
+        padding:1rem 0;
+        font-size: 2.5rem;
+        color:#3bba9c;
+    }
+
+    .products-preview .preview .buttons{
+        display: flex;
+        gap:1.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    .products-preview .preview .buttons a{
+        flex:1 1 16rem;
+        padding:1rem;
+        font-size: 1.8rem;
+        color:#444;
+        border:.1rem solid #444;
+        border-radius: 10px;
+    }
+
+    .products-preview .preview .buttons a.voucher{
+        background: #444;
+        color:#fff;
+    }
+
+    .products-preview .preview .buttons a.voucher:hover{
+        background: #111;
+    }
+
+    .products-preview .preview .buttons a.buy:hover{
+        background: #444;
+        color:#fff;
+    }
+
+    .mydiv{
+        margin:0 auto;
+    }
+    .mybtn{
+        background: #444;
+        color: #fff;
+        border:.1rem solid #444;
+        border-radius: 10px;
+        flex:1 1 16rem;
+        padding:1rem;
+        font-size: 1.8rem;
+    }
+
+    img{
+        width: auto;
+        max-width: 300px;
+        height: auto;
+        max-height: 200px;
+        border-radius: 10px;
+    }
+
+    @media (max-width:991px){
+
+        html{
+            font-size: 55%;
+        }
+
+    }
+
+    @media (max-width:768px){
+
+        .products-preview .preview img{
+            height: 25rem;
+        }
+
+    }
+
+    @media (max-width:450px){
+
+        html{
+            font-size: 50%;
+        }
+
+    }
+
+</style>
+
+</html>

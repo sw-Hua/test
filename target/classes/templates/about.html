@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Premium</title>
+    <!--    <link rel="stylesheet" href="main.css"/>-->
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/about.css}" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+</head>
+<script type="text/javascript" src="sidebar.js"></script>
+
+<body>
+<div class="app">
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <h3>Restaurant Premium</h3>
+
+        <nav class="menu">
+            <a href="/about" class="menu-item is-active" id="menu">About</a>
+            <a href="/premium" class="menu-item">Premium</a>
+            <a href="/portfolio" class="menu-item">Portfolio</a>
+            <a href="/payment" class="menu-item">Payment</a>
+            <a href="/activity" class="menu-item">Activity</a>
+            <a href="/reward" class="menu-item">Reward</a>
+            <a href="/vipMain" class="menu-item " id="menu">Home</a>
+        </nav>
+
+    </aside>
+
+
+    <main class="content" id="content1">
+        <!--        <h1 class="text-center">About</h1>-->
+        <h1 class="text-center">About Our Restaurant</h1>
+        <div class="myImg img1"><img th:src="@{images/chef.jpg}" class="img-rounded mysize1"></div>
+
+        <h1 class="text-center">Restaurant Features</h1>
+        <p class="text-center myDivSpace">Machigi Pavilion was founded in 1960 (Showa 35) in Fukuoka City, Fukuoka
+            Prefecture, Japan. It is open 24 hours a day and is a typical Hakata style ramen. When Ichiran Ramen
+            opened, it was operated as a member-only ramen shop that was very rare at the time.</p>
+
+        <div class="flex1">
+            <div class="flex1-1">
+                <h4>Garlic Roasted Wagyu Beef</h4>
+                <div class="myImg"><img th:src="@{images/kobe.jpg}" class="img-rounded mysize2"></div>
+            </div>
+            <div class="flex1-2">Introduce:</div>
+            <div class="flex1-2">This method can be used for both A4 and A3 Wagyu beef. After the beef is roasted,
+                the fat is melted due to the high temperature. It smells fragrant and does not taste too old.
+                Because Wagyu beef is more precious, it should still be the original flavor, and you can start to
+                taste it with some salt.
+            </div>
+            <div class="flex1-3">
+                <h4>Hakata style ramen</h4>
+                <div class="myImg"><img th:src="@{images/ramen.jpg}" class="img-rounded mysize2"></div>
+            </div>
+            <div class="flex1-4">Introduce:</div>
+            <div class="flex1-4">Tonkotsu ramen is a food. The main raw materials are tonkotsu broth, sliced meat,
+                thin ramen noodles, canned corn kernels, etc. It is delicious and nutritious. Tonkotsu broth,
+                appropriate amount, 100g sliced meat, 150g thin ramen noodles, canned corn kernels, kelp sprouts,
+                10g fish fillet, chopped green onion</div>
+            <div class="flex1-5">
+                <h4>Norwegian Salmon</h4>
+                <div class="myImg"><img th:src="@{images/tuna.jpg}" class="img-rounded mysize2"></div>
+            </div>
+            <div class="flex1-6">Introduce:</div>
+            <div class="flex1-6">In 1985, the Minister of Fisheries of Norway led a national team to fly to Japan to
+                promote Norwegian salmon, expecting to use salmon for sushi. In 1994, Japan used Norwegian salmon
+                for sashimi and sushi. The Norwegian Seafood Authority brought Norwegian salmon to the Australian
+                market decades ago.</div>
+
+        </div>
+
+        <h1 class="text-center">Dish Description</h1>
+        <p class="text-center myDivSpace">The staple food is mainly rice and noodles. Because it is close to the
+            sea, the non-staple food is mostly seafood such as fresh fish and shrimp, often accompanied by Japanese
+            sake. Washoku is known for its lightness, so try to keep the original flavor of the ingredients when
+            cooking.</p>
+        <div class="myBackground">
+            <div class="myImg"><img th:src="@{images/unadon.jpg}" class="img-rounded mysize"></div>
+        </div>
+
+
+        <div class="flex2">
+            <div class="">
+                <h4 class="text-center">Eel rice</h4>Unagi rice, also known as eel rice bowl, is one of the
+                traditional summer foods in Japan. Unagi rice is a rice bowl made by dipping eel in a sweet and
+                salty sauce, and then topping white rice with the side dish eel, also called eel rice bowl. The
+                easiest season to taste is summer. This is because the 18 days before the beginning of autumn are
+                called "Summer's soil use", which is the hottest period of the year. Since the Edo period, there has
+                been "the day of the soil use ugly [around July 25th]. ] If you eat eel, you won’t lose weight in
+                summer” because of the saying. Needless to say, there are shops specializing in eel, supermarkets,
+                fish shops, etc.
+            </div>
+            <div class="">
+                <h4 class="text-center">soba:</h4>Soba noodles contain 70% starch and 7%-13% protein, and the amino
+                acid composition in the protein is relatively balanced, and the content of lysine and threonine is
+                relatively rich. Soba noodles contain 2%-3% fat, and the content of oleic acid and linoleic acid,
+                which are beneficial to the human body, is also high. These two fatty acids play a role in reducing
+                blood lipids in the human body, and are also an important part of an important
+                hormone-prostaglandin. The vitamins D1 and B2 in soba noodles are 3-20 times that of wheat flour,
+                which are rare in general grains. The biggest nutritional feature of soba noodles is that it is
+                rarely available in general food.
+            </div>
+            <div class="">
+                <h4 class="text-center">Tonkatsu:</h4>Tonkatsu is a deep-fried pork dish found all over the world.
+                Originated in Vienna, Austria. Austrian Vienna Pork Chops are bigger than a human face and are a
+                must-have food in cafes. The practice is to flatten the pork to more than 70cm, soak it in champagne
+                for a few hours, then wrap it in egg liquid, add bread crumbs, and fry it in a pan. The Shanghai
+                fried pork chop is a very distinctive traditional snack. It is coated with heavy Chinese flour,
+                without bread crumbs, and the seasoning needs to be freshened with spicy soy sauce; Japanese fried
+                pork chop is a foreign food in Japanese cuisine..
+            </div>
+            <div class="">
+                <h4 class="text-center">Yakitori:</h4>Yakitori can be divided into salt-grilled and miso-grilled.
+                The main ingredients of the Dali sauce (タレ/気れ) used in misoyaki are mirin, sake, soy sauce and
+                sugar. In addition, seasoning with shichimi powder, black pepper, Japanese wasabi, etc. is also
+                quite common. Yakitori (焼きbird/Yakitori) is a Japanese food. Generally speaking, bite-sized pieces
+                of chicken or chicken offal are placed on bamboo skewers, and are often grilled over a charcoal
+                fire. Yakitori is a very popular izakaya snack. There are also specialty shops that mainly focus on
+                yakitori. Between each piece of chicken or chicken offal, green peppers.
+            </div>
+        </div>
+        <div class="myBackground">
+            <div class="myImg"><img th:src="@{images/soba.jpg}" class="img-rounded mysize"></div>
+        </div>
+        <div id="myCarousel" class="carousel slide mySlide">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li data-target="" data-slide-to="0" class="active"></li>
+                <li data-target="" data-slide-to="1"></li>
+                <li data-target="" data-slide-to="2"></li>
+            </ol>
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div>
+                        <h4 style="color: white">This is one of the best restaurants I've ever eaten at</h4>
+                    </div>
+                    <div>Recommended dishes include Honey Sauce BBQ Pork, Salted Chicken, Shrimp Fried Protein,
+                        Black Vinegar Pineapple Bone with Fried Fresh Milk, etc. </div>
+                    <div>——Michelin restaurant chef Bryant Malone</div>
+                    <!--                    <div class="carousel-caption">1</div>-->
+                </div>
+                <div class="item">
+                    <div>
+                        <h4 style="color: white">The service in the restaurant was very good and impressive!</h4>
+                    </div>
+                    <div>In a small bungalow, there are antique furniture and elegant oil paintings. The interior is
+                        mainly decorated in white, and there are elements of "deer" everywhere. </div>
+                    <div>——Top Food Critic Julius Carter</div>
+
+                    <!--                    <div class="carousel-caption">2</div>-->
+                </div>
+                <div class="item">
+                    <div>
+                        <h4 style="color: white">The quality of the restaurant is top level!</h4>
+                    </div>
+                    <div>Dim yellow lights, nostalgic decorations, souvenirs from the 1930s, singers in cheongsams
+                        singing old songs... Renhe Pavilion is a pure local restaurant. Freshly baked pastry egg
+                        tarts can be used as dessert.</div>
+                    <div>——famous actor Karmanen</div>
+                    <!--                    <div class="carousel-caption">3</div>-->
+                </div>
+            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <h1 class="text-center">Innovative Japanese Cuisine</h1>
+        <div class="myShrink">
+            <p class="text-center">To visit the popular restaurant Narisawa, headed by star chef Yuhiro Narizawa, a
+                reservation must be made! Guests can enjoy chef omakase's special menu, as well as new menus created
+                with the freshest meats and herbs in season. The kitchen focuses on innovation and environmental
+                protection, and is committed to reducing food waste.
+            </p>
+        </div>
+        <div class="myImg"><img th:src="@{images/wuzhen.jpg}" class="img-rounded mySize"></div>
+        <div class="myShrink">
+            <p class="text-center">Narisawa Address: 2-6-15 Minami Aoyama, Minato 107-0062, Tokyo. About a 4-minute
+                walk from Aoyama-itchome Station on the Tokyo Metro Ginza Line. You can also go to Waiyuanmae
+                Station.</p>
+            <h1 class="text-center">Featured dishes</h1>
+            <p class="text-center">Although Narisawa's menu changes from time to time, requests for specific dishes
+                can also be made at the time of reservation. Basically here you can enjoy the freshest seafood,
+                grilled meats and delicious side dishes. Narisawa is a high-end restaurant, and the average
+                consumption per person is about 15,000-20,000 yen.
+            </p>
+        </div>
+
+
+
+
+    </main>
+
+</div>
+
+</body>
+<style>
+
+</style>
+
+</html>
