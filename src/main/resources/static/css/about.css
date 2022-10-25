@@ -1,0 +1,115 @@
+main{
+    padding: 20px;
+}
+.mySlide{
+    background-color: #3C3F58;
+    color: white;
+    padding: 70px;
+    width: 500px;
+    margin-top: 40px;
+    margin-left: 33%;
+    box-shadow: 0 0 20px #3C3F58;
+    height: 300px;
+}
+
+.myText{
+    color: white;
+}
+
+
+.flex2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 13%;
+    color: white;
+}
+.flex2 > * {
+    flex-basis: 500px;
+}
+
+.flex2 div{
+    background-color: #2e3047;
+    opacity: 50%;
+    padding: 20px;
+    margin: 10px;
+    height: 300px;
+    box-shadow: 0 0 10px #3C3F58;
+
+}
+
+.flex1{
+    display: flex;
+    background-color: black;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+.flex1 div{
+    margin: 20px;
+}
+.flex1-1 .flex1-3 .flex1-5{
+    background-color: #FFFFFF;
+    color: black;
+
+}
+
+.flex1-2 .flex1-4 .flex1-6{
+    background-color: #FFFFFF;
+}
+
+
+
+.flex1-4{
+
+}
+
+
+.flex1-6{
+
+}
+
+
+.img-rounded{
+    width: 1000px;
+}
+
+.myImg {
+    text-align: center;
+
+}
+.mysize{
+    width: 800px;
+}
+.mysize1{
+    width: 85%;
+}
+
+.mysize2{
+    width: 800px;
+}
+
+.myBackground{
+    background-color: black;
+    width: 100%;
+    padding: 30px;
+}
+
+.myShrink{
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.myDivSpace{
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.divCenter{
+    display: flex;
+    justify-content: center;
+}
